@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 01, 2021 at 02:30 PM
+-- Generation Time: Jan 04, 2021 at 07:56 PM
 -- Server version: 10.1.38-MariaDB
 -- PHP Version: 7.1.27
 
@@ -21,6 +21,26 @@ SET time_zone = "+00:00";
 --
 -- Database: `tourism`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `agencyinfo`
+--
+
+CREATE TABLE `agencyinfo` (
+  `id` int(50) NOT NULL,
+  `name` varchar(500) NOT NULL,
+  `password` varchar(500) NOT NULL,
+  `type` varchar(500) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `agencyinfo`
+--
+
+INSERT INTO `agencyinfo` (`id`, `name`, `password`, `type`) VALUES
+(1, 'suhe', '147', 'tourowner');
 
 -- --------------------------------------------------------
 
@@ -45,9 +65,9 @@ CREATE TABLE `hotel` (
 --
 
 INSERT INTO `hotel` (`id`, `hname`, `place`, `roomname`, `price`, `map`, `description`, `picone`, `pictwo`) VALUES
-(1, 'Sayeman Beach resort', 'Coxs Bazar', 'Premium Super Deluxe ', '5000', '\\public\\assets\\imgs\\sayemanmap.jpg', 'Sayeman Beach Resort revives its famed legacy of comfort, elegance and impeccable service. An eminent landmark constructed in 1964, this legendary first private hotel of Cox’s Bazar is reborn, infusing modern sophistication into this vintage-chic, iconic hotel at a new beachfront location of Marine Drive, Kolatoli, Cox’s Bazar.', '\\public\\assets\\imgs\\h1.jpg', '\\public\\assets\\imgs\\htl1.jpg'),
-(2, 'Royal Tulip Hotel', 'Coxs Bazar', 'Couple Deluxe', '7600', '\\public\\assets\\imgs\\royalmap.jpg', 'Sayeman Beach Resort revives its famed legacy of comfort, elegance and impeccable service. An eminent landmark constructed in 1964, this legendary first private hotel of Cox’s Bazar is reborn, infusing modern sophistication into this vintage-chic, iconic hotel at a new beachfront location of Marine Drive, Kolatoli, Cox’s Bazar.', '\\public\\assets\\imgs\\h2.jpg', '\\public\\assets\\imgs\\htl2.jpg'),
-(3, 'Grand Sultan Hotel', 'Sylhet', 'VVIP Super Deluxe', '8800', '\\public\\assets\\imgs\\grandmap.jpg', 'Grand Sultan Resort revives its famed legacy of comfort, elegance and impeccable service. An eminent landmark constructed in 1964, this legendary first private hotel of Cox’s Bazar is reborn, infusing modern sophistication into this vintage-chic, iconic hotel at a new beachfront location of Marine Drive, Sylhet.', '\\public\\assets\\imgs\\h3.jpg', '\\public\\assets\\imgs\\htl3.jpg');
+(1, 'Sayeman Beach resort', 'Coxs Bazar', 'Premium Super Deluxe ', '5000', 'sayemanmap.jpg', 'Sayeman Beach Resort revives its famed legacy of comfort, elegance and impeccable service. An eminent landmark constructed in 1964, this legendary first private hotel of Cox’s Bazar is reborn, infusing modern sophistication into this vintage-chic, iconic hotel at a new beachfront location of Marine Drive, Kolatoli, Cox’s Bazar.', 'h1.jpg', 'htl1.jpg'),
+(2, 'Royal Tulip Hotel', 'Coxs Bazar', 'Couple Deluxe', '7600', 'royalmap.jpg', 'Sayeman Beach Resort revives its famed legacy of comfort, elegance and impeccable service. An eminent landmark constructed in 1964, this legendary first private hotel of Cox’s Bazar is reborn, infusing modern sophistication into this vintage-chic, iconic hotel at a new beachfront location of Marine Drive, Kolatoli, Cox’s Bazar.', 'h2.jpg', 'htl2.jpg'),
+(3, 'Grand Sultan Hotel', 'Sylhet', 'VVIP Super Deluxe', '8800', 'grandmap.jpg', 'Grand Sultan Resort revives its famed legacy of comfort, elegance and impeccable service. An eminent landmark constructed in 1964, this legendary first private hotel of Cox’s Bazar is reborn, infusing modern sophistication into this vintage-chic, iconic hotel at a new beachfront location of Marine Drive, Sylhet.', 'h3.jpg', 'htl3.jpg');
 
 -- --------------------------------------------------------
 
@@ -58,7 +78,9 @@ INSERT INTO `hotel` (`id`, `hname`, `place`, `roomname`, `price`, `map`, `descri
 CREATE TABLE `tours` (
   `id` int(50) NOT NULL,
   `tname` varchar(500) NOT NULL,
+  `departure` varchar(500) NOT NULL,
   `place` varchar(500) NOT NULL,
+  `transport` varchar(500) NOT NULL,
   `tprice` varchar(500) NOT NULL,
   `seller` varchar(500) NOT NULL,
   `description` varchar(5000) NOT NULL,
@@ -71,10 +93,10 @@ CREATE TABLE `tours` (
 -- Dumping data for table `tours`
 --
 
-INSERT INTO `tours` (`id`, `tname`, `place`, `tprice`, `seller`, `description`, `duration`, `picthree`, `rating`) VALUES
-(1, 'Hill View Tour', 'Sylhet', '4200', 'Travel Sense BD', 'Sylhet is the tourism spot of BD n early 2005, Laskar Muqsudur Rahman, Deputy Conservator of Forests, Sylhet Forest Division, observed that Jaflong that he heard in his boyhood as the \'lungs\' of Greater Sylhet was at stake due to on going encroachments and establishment of unauthorized stone crushing mills. He took initiatives to recover the land and establish a recreation-cum-botanical park named as \'Jaflong Green Park\'.', '3 days 2 nights', '\\public\\assets\\imgs\\hill2.jpg', 5.4),
-(2, 'Coxs Beach View', 'Coxs Bazar', '3800', 'BD tour Planner', 'Coxs bazar is the tourism spot of BD n early 2005, Laskar Muqsudur Rahman, Deputy Conservator of Forests, Sylhet Forest Division, observed that Jaflong that he heard in his boyhood as the \'lungs\' of Greater Sylhet was at stake due to on going encroachments and establishment of unauthorized stone crushing mills. He took initiatives to recover the land and establish a recreation-cum-botanical park named as \'Jaflong Green Park\'.', '4 days 3 nights', '\\public\\assets\\imgs\\bch2.jpg', 2.8),
-(3, 'Inani View tour', 'Coxs Bazar', '2800', 'Travellers Hunt BD', 'Inani Beach is an 18-kilometre-long sea beach in Ukhia Upazila of Cox\'s Bazar District, Bangladesh. It has a lot of coral stones, which are very sharp. These coral stones look black and green, and they are found in summer or rainy seasons. Pathorkhani is located in Jaliapalong, Inani Beach.', '2 days 3 nights ', '\\public\\assets\\imgs\\inani2.jpg', 3.4);
+INSERT INTO `tours` (`id`, `tname`, `departure`, `place`, `transport`, `tprice`, `seller`, `description`, `duration`, `picthree`, `rating`) VALUES
+(1, 'Hill View Tour', '8 pm', 'Sylhet', 'Bus', '4200', 'Travel Sense BD', 'Sylhet is the tourism spot of BD n early 2005, Laskar Muqsudur Rahman, Deputy Conservator of Forests, Sylhet Forest Division, observed that Jaflong that he heard in his boyhood as the \'lungs\' of Greater Sylhet was at stake due to on going encroachments and establishment of unauthorized stone crushing mills. He took initiatives to recover the land and establish a recreation-cum-botanical park named as \'Jaflong Green Park\'.', '3 days 2 nights', '\\public\\assets\\imgs\\hill2.jpg', 5.08448),
+(2, 'Coxs Beach View', '8 pm', 'Coxs Bazar', 'Bus', '3800', 'BD tour Planner', 'Coxs bazar is the tourism spot of BD n early 2005, Laskar Muqsudur Rahman, Deputy Conservator of Forests, Sylhet Forest Division, observed that Jaflong that he heard in his boyhood as the \'lungs\' of Greater Sylhet was at stake due to on going encroachments and establishment of unauthorized stone crushing mills. He took initiatives to recover the land and establish a recreation-cum-botanical park named as \'Jaflong Green Park\'.', '4 days 3 nights', '\\public\\assets\\imgs\\bch2.jpg', 5.5120000000000005),
+(3, 'Inani View tour', '8 pm', 'Coxs Bazar', 'Bus', '2800', 'Travellers Hunt BD', 'Inani Beach is an 18-kilometre-long sea beach in Ukhia Upazila of Cox\'s Bazar District, Bangladesh. It has a lot of coral stones, which are very sharp. These coral stones look black and green, and they are found in summer or rainy seasons. Pathorkhani is located in Jaliapalong, Inani Beach.', '2 days 3 nights ', '\\public\\assets\\imgs\\inani2.jpg', 5.536);
 
 -- --------------------------------------------------------
 
@@ -136,11 +158,19 @@ INSERT INTO `user` (`id`, `Cname`, `Cemail`, `password`, `tour`, `hotel`, `statu
 (12, 'simuul', 'si@gmail.com', 'dscdfc', 'Hill View Tour', ' ', ' ', '4200', 'Capture.JPG'),
 (13, 'Fav', 'f@gmail.com', 'dfsdfs', 'Hill View Tour', ' ', 'pending', '4200', 'net.JPG'),
 (14, 'rajib', 'rajib@gmail.com', '56465', 'Coxs Beach View', ' ', 'Pending', '11400', '11.JPG'),
-(15, 'join', 'join@gmail.com', '646846', 'Hill View Tour', ' ', 'Pending', '4200', '4.jpg');
+(15, 'join', 'join@gmail.com', '646846', 'Hill View Tour', ' ', 'Pending', '4200', '4.jpg'),
+(16, 'newhotel', 'new@gmail.com', 'fghfhfth', ' ', 'Sayeman Beach resort', 'Pending', '5000', 'Capture.JPG'),
+(17, 'rahi', 'rahi@gmail.com', '654165', ' ', 'Royal Tulip Hotel', 'Pending', '7600', 'imgone.jpg');
 
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `agencyinfo`
+--
+ALTER TABLE `agencyinfo`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `hotel`
@@ -171,6 +201,12 @@ ALTER TABLE `user`
 --
 
 --
+-- AUTO_INCREMENT for table `agencyinfo`
+--
+ALTER TABLE `agencyinfo`
+  MODIFY `id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT for table `hotel`
 --
 ALTER TABLE `hotel`
@@ -192,7 +228,7 @@ ALTER TABLE `tour_det`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
