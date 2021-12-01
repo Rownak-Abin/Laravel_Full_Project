@@ -11,11 +11,14 @@ class homeController extends Controller
 {
 	 public function index(){
 
-    	$resp = Http::get('http://localhost:4000/home/showtour');
+    	/*$resp = Http::get('http://localhost:4000/home/showtour');
 
     	$ss = json_decode($resp, true);
+    	
+		->with('node', $ss)
+    	*/
 
-	    return view('home.index')->with('node', $ss);
+	    return view('home.index'); /***kkk */
     }
 
 
