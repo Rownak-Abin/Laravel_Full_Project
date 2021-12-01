@@ -19,7 +19,7 @@ class homeController extends Controller
     	*/
 
 	   
-		return view('home.index'); /*huuell*/
+		return view('home.index'); /*huuxell*/
 	  
          /***ddd*/
     }
