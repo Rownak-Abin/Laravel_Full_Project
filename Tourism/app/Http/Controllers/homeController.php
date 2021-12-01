@@ -22,7 +22,7 @@ class homeController extends Controller
 		return view('home.index'); /*heuazll*/
 
 	  
-         /***ddd*/
+         /***ddd*/ /*dfs*/
     }
 
 
