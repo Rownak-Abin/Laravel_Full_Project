@@ -18,7 +18,10 @@ class homeController extends Controller
 		->with('node', $ss)
     	*/
 
-	    return view('home.index'); /***kkk fuck hell*/
+	   
+		return view('home.index'); 
+	  
+         /***ddd*/
     }
 
 
